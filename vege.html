@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenMart - Fresh Organic Vegetables</title>
+  <meta name="description" content="Fresh, organic vegetables delivered to your doorstep. Shop the best quality produce at GreenMart!"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary: #2e8b57;
+      --primary-dark: #1e6b42;
+      --secondary: #f4a261;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --gray: #6c757d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--dark); background: #fff; }
+    a { text-decoration: none; }
+    ul { list-style: none; }
+
+    /* Header & Nav */
+    header {
+      background: var(--primary);
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--secondary); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .nav-links a:hover { color: var(--secondary); }
+    .cart-icon {
+      font-size: 1.5rem;
+      position: relative;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.8rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 70px;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #e76f51; transform: translateY(-3px); }
+
+    /* Categories */
+    .categories {
+      padding: 80px 20px;
+      text-align: center;
+      background: var(--light);
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h2 { font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark); }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .category-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .category-card:hover { transform: translateY(-10px); }
+    .category-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .category-info {
+      padding: 1.5rem;
+    }
+    .category-info h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
+
+    /* Featured Products */
+    .products {
+      padding: 80px 20px;
+      background: white;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      text-align: center;
+    }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 1.5rem;
+    }
+    .product-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .price {
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+    .add-to-cart {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .add-to-cart:hover { background: var(--primary-dark); }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a { color: #ccc; transition: 0.3s; }
+    .footer-links a:hover { color: var(--secondary); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; } /* You can add a mobile menu later */
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-content p { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">Green<span>Mart</span></div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Fresh From Farm to Your Table</h1>
+      <p>100% organic vegetables, hand-picked daily. Healthy living starts here!</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories">
+    <div class="container">
+      <h2>Shop by Category</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <img src="https://images.pexels.com/photos/533289/pexels-photo-533289.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Leafy Greens"/>
+          <div class="category-info">
+            <h3>Leafy Greens</h3>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.pexels.com/photos/144248/pexels-photo-144248.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Root Vegetables"/>
+          <div class="category-info">
+            <h3>Root Vegetables</h3>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.pexels.com/photos/1291712/pexels-photo-1291712.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fresh Fruits"/>
+          <div class="category-info">
+            <h3>Seasonal Fruits</h3>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.pexels.com/photos/461214/pexels-photo-461214.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Herbs & Spices"/>
+          <div class="category-info">
+            <h3>Herbs & Spices</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="products" id="products">
+    <div class="container">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://images.pexels.com/photos/321615/pexels-photo-321615.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Carrots"/>
+          <div class="product-info">
+            <h3>Organic Carrots</h3>
+            <div class="price">$2.99/kg</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </ Rydberg>
+        </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Spinach"/>
+          <div class="product-info">
+            <h3>Fresh Spinach</h3>
+            <div class="price">$1.79/bunch</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.pexels.com/photos/128402/pexels-photo-128402.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tomatoes"/>
+          <div class="product-info">
+            <h3>Roma Tomatoes</h3>
+            <div class="price">$3.49/kg</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.pexels.com/photos/1438671/pexels-photo-1438671.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Broccoli"/>
+          <div class="product-info">
+            <h3>Organic Broccoli</h3>
+            <div class="price">$4.29/kg</div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Delivery Info</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+      <p>&copy; 2025 GreenMart. All rights reserved. Freshness Guaranteed.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple cart counter (demo)
+    let cartCount = 0;
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cartCount++;
+        document.querySelector('.cart-count').textContent = cartCount;
+        alert('Item added to cart!');
+      });
+    });
+  </script>
+</body>
+</html>
